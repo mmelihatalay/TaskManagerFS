@@ -77,4 +77,6 @@ const deleteTask = async (task) => {
   res = await fetch(`tasks/${task.id}`, {
     method: "DELETE",
   });
+  loadTasks()
+  /* bu fonksiyonu neden çağıramıyorum */
 };
