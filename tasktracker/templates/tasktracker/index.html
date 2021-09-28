@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'tasktracker/style.css' %}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>
+    <title>Task Tracker</title>
+</head>
+
+<body>
+    <h1 id="title">Task Tracker</h1>
+    <div id="add-task" class="container">
+        <div class="row">
+            {% csrf_token %}
+            <div class="col" id="task-form-div">
+                <form id="add-task-form">
+                    <label for="task-line">Task:</label>
+                    <input type="text" id="task-line" name="task-line" placeholder="Add task...">
+                    <label for="date-line">Date:</label>
+                    <input type="datetime-local" id="date-line" name="date-line">
+                    <label for="reminder-line">Reminder </label>
+                    <input type="checkbox" id="reminder-line" name="reminder-line" value="false">
+                    <input class="btn btn-primary" type="Submit" value="Add">
+
+                </form>
+            </div>
+            <div class="col">
+                <button class="btn btn-success" id="add-task-btn"> Add Task </button>
+            </div>
+        </div>
+    </div>
+    <div id="load-tasks" class="container">{% csrf_token %}</div>
+    <script src="../../static/tasktracker/index.js"></script>
+</body>
+
+</html>
