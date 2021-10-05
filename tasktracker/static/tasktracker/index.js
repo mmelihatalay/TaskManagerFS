@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("task-form-div").style.display = "none";
   document.getElementById("reminder-line").addEventListener("change", () => {
     const initialValue = document.getElementById("reminder-line").value;
-    if (initialValue === "False") {
-      document.getElementById("reminder-line").value = "True";
+    if (initialValue === "false") {
+      document.getElementById("reminder-line").value = "true";
     }
-    if (initialValue === "True") {
-      document.getElementById("reminder-line").value = "False";
+    if (initialValue === "true") {
+      document.getElementById("reminder-line").value = "false";
     }
   });
 
@@ -70,11 +70,13 @@ const addTask = async () => {
     method: "POST",
     body: JSON.stringify({ task: task, targetTime: date, reminder: reminder }),
   });
-  data = await res.json();
+  data = res.json();
 };
 
 const deleteTask = async (task) => {
   res = await fetch(`tasks/${task.id}`, {
     method: "DELETE",
   });
+  document.getElementById("load-tasks").innerHTML = "";
+  loadTasks();
 };
